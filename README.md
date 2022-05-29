@@ -30,10 +30,11 @@ $	language mode
 When you use `;`, the string corresponding to the value in the stack is added whatever mode you are in.
 
 For example, you want to add the Rust `(index: 203)` language.
-- First, we need to switch to language mode, because we want to add a language: `$`
+- First, we have to enter our identicode version. Simply run `identicode` and it will give you your version. (ex. `+++;`)
+- Then, we need to switch to language mode, because we want to add a language: `$`
 - Write the code corresponding to the index: `==+++`
 - After you write the code, you can add Rust to the languages section by using `;`.
-- Final code: `$==+++;`
+- Final code: `+++;$==+++;`
 
 You can also apply this process with operating systems (`?`), branches (`@`) and
 others (`&`).
