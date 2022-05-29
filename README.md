@@ -16,6 +16,7 @@ cargo install identicode
 $	language mode
 @	branch mode
 ?	os mode
+&	others mode
 
 +	add 1
 *	add 5
@@ -34,7 +35,8 @@ For example, you want to add the Rust `(index: 203)` language.
 - After you write the code, you can add Rust to the languages section by using `;`.
 - Final code: `$==+++;`
 
-You can also apply this process with operating systems (`?`) and branches (`@`).
+You can also apply this process with operating systems (`?`), branches (`@`) and
+others (`&`).
 
 ## Indexes:
 If you can't find what you want, you can create a [Pull Request](https://github.com/gulje/identicode/pulls)!
@@ -475,6 +477,54 @@ and don't forget to add it to the [Indexes](#indexes) section in [README.md](REA
 123	TempleOS
 124	Serenity
 125	Visopsys
+```
+</details>
+<details>
+	<summary>Others</summary>
+
+```
+0	GNOME Shell
+1	KDE Plasma
+2	Xfce
+3	Fluxbox
+4	LXDE
+5	LXQt
+6	Enlightenment
+7	MATE
+8	Cinnamon
+9	EDE
+10	Razor-qt
+11	Mezzo
+12	ROX
+13	Sugar
+14	Trinity
+15	Unity
+16	Windows Vista (Aero)
+17	Mac OS X (Aqua)
+18	Ambient
+19	Pantheon
+20	Moksha
+21	UKUI
+22	Cutefish
+23	Deepin DE
+24	Budgie
+25	Openbox
+26	i3wm
+27	bspwm
+28	dwm
+29	sway
+30	IceWM
+31	Discord
+32	GitHub
+33	Matrix
+34	Git
+35	Chrome
+36	Visual Studio Code
+37	Sublime Text
+38	vim
+39	nvim
+40	gvim
+41	Atom
 ```
 </details>
 

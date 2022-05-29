@@ -18,12 +18,14 @@ enum Modes {
 	Language,
 	Branch,
 	OS,
+	Other
 }
 
 pub enum Tokens {
 	Language,
 	Branch,
 	OS,
+	Other,
 
 	Push,
 	Push5,
@@ -39,6 +41,7 @@ pub struct Identicode {
 	lang_list: Vec<String>,
 	branch_list: Vec<String>,
 	os_list: Vec<String>,
+	other_list: Vec<String>,
 
 	mode: Modes,
 
@@ -46,7 +49,8 @@ pub struct Identicode {
 
 	pub languages: Vec<String>,
 	pub branches: Vec<String>,
-	pub oses: Vec<String>
+	pub oses: Vec<String>,
+	pub others: Vec<String>
 }
 
 impl Tokens {
@@ -57,6 +61,7 @@ impl Tokens {
 			'$' => { Language },
 			'@' => { Branch },
 			'?' => { OS },
+			'&' => { Other },
 
 			'+' => { Push },
 			'*' => { Push5 },
@@ -82,6 +87,7 @@ impl Default for Identicode {
 			languages: vec![],
 			branches: vec![],
 			oses: vec![],
+			others: vec![],
 			lang_list: vec![
 				"4th Dimension/4D",
 				"ABAP",
@@ -506,6 +512,50 @@ impl Default for Identicode {
 				"Serenity",
 				"Visopsys"
 			].iter().map(|&s| s.into()).collect(),
+			other_list: vec![
+				"GNOME Shell",
+				"KDE Plasma",
+				"Xfce",
+				"Fluxbox",
+				"LXDE",
+				"LXQt",
+				"Enlightenment",
+				"MATE",
+				"Cinnamon",
+				"EDE",
+				"Razor-qt",
+				"Mezzo",
+				"ROX",
+				"Sugar",
+				"Trinity",
+				"Unity",
+				"Windows Vista (Aero)",
+				"Mac OS X (Aqua)",
+				"Ambient",
+				"Pantheon",
+				"Moksha",
+				"UKUI",
+				"Cutefish",
+				"Deepin DE",
+				"Budgie",
+				"Openbox",
+				"i3wm",
+				"bspwm",
+				"dwm",
+				"sway",
+				"IceWM",
+				"Discord",
+				"GitHub",
+				"Matrix",
+				"Git",
+				"Chrome",
+				"Visual Studio Code",
+				"Sublime Text",
+				"vim",
+				"nvim",
+				"gvim",
+				"Atom"
+			].iter().map(|&s| s.into()).collect(),
 		}
 	}
 }
@@ -525,6 +575,9 @@ impl Identicode {
 				OS => {
 					self.mode = Modes::OS;
 				},
+				Other => {
+					self.mode = Modes::Other;
+				}
 
 				Push => {
 					self.stack += 1;
@@ -559,6 +612,8 @@ impl Identicode {
 						push_item(&mut self.branches, &mut self.branch_list, self.stack);
 					} else if self.mode == Modes::OS && self.stack < self.os_list.len() as u64 {
 						push_item(&mut self.oses, &mut self.os_list, self.stack);
+					} else if self.mode == Modes::Other && self.stack < self.other_list.len() as u64 {
+						push_item(&mut self.others, &mut self.other_list, self.stack);
 					}
 
 					self.stack = 0;

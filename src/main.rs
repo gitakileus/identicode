@@ -46,4 +46,7 @@ fn main() {
 
     println!("\n\x1b[1;94mOperating Systems\x1b[0m:");
     print_info(init.oses);
+
+    println!("\n\x1b[1;90mOthers\x1b[0m:");
+    print_info(init.others);
 }
