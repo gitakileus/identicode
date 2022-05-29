@@ -120,13 +120,10 @@ impl Default for Identicode {
 }
 
 impl Identicode {
-    pub fn init<T>(&mut self, file_data: T)
-    where
-        T: ToString,
-    {
+    pub fn init(&mut self, file_data: String) {
         use Tokens::*;
 
-        for ch in file_data.to_string().chars() {
+        for ch in file_data.chars() {
             match Tokens::val(ch) {
                 Language => {
                     self.mode = Modes::Language;
