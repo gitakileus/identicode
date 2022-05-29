@@ -256,3 +256,13 @@ Yorick
 Z shell
 HTML
 CSS
+Deno
+Node.js
+Vue.js
+Svelte
+SolidJS
+Astro
+Angular
+AngularJS
+Bootstrap
+Bulma

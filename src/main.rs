@@ -46,7 +46,7 @@ fn main() {
             Some items may not be printed correctly. Please update identicode!\n");
     }
 
-    println!("\x1b[1;91mLanguages\x1b[0m:");
+    println!("\x1b[1;91mLanguages & Frameworks\x1b[0m:");
     print_info(init.languages);
 
     println!("\n\x1b[1;92mBranches\x1b[0m:");
