@@ -3,12 +3,28 @@
 	<p><i>code that identifies you</i></p>
 	<a href="https://crates.io/crates/identicode"><img src="https://img.shields.io/crates/v/identicode?style=flat-square"/></a>
 	<img src="https://img.shields.io/github/license/gulje/identicode?style=flat-square"/>
+	<a href="https://github.com/gulje/identicode"><img src="https://img.shields.io/static/v1?label=See:&message=identicode&color=blueviolet&style=flat-square&logo=github"></a>
 </div>
 
 ## Build & Installation
 It can be downloaded and installed simply with the following command:
 ```sh
 cargo install identicode
+```
+
+## Support Us
+You can add your own `identicode` to your profile.
+
+Of course you can let people know what it is by providing a link to this repository:
+[![Identicode](https://img.shields.io/static/v1?label=See:&message=identicode&color=blueviolet&style=flat-square&logo=github)](https://github.com/gulje/identicode)
+
+### Markdown
+```md
+[![Identicode](https://img.shields.io/static/v1?label=See:&message=identicode&color=blueviolet&style=flat-square&logo=github)](https://github.com/gulje/identicode)
+```
+### HTML
+```html
+<a href="https://github.com/gulje/identicode"><img src="https://img.shields.io/static/v1?label=See:&message=identicode&color=blueviolet&style=flat-square&logo=github"></a>
 ```
 
 ## How to use?
@@ -39,10 +55,10 @@ For example, you want to add the Rust `(index: 203)` language.
 You can also apply this process with operating systems (`?`), branches (`@`) and
 others (`&`).
 
-## Indexes:
+## Indexes
 If you can't find what you want, you can create a [Pull Request](https://github.com/gulje/identicode/pulls)!
 
-All lists are present in `src/data` folder. Add what you want to add at the bottom.
+All lists are present in [`src/data`](src/data) folder. Add what you want to add at the bottom.
 
 An item's index is found by `(the line number it is in - 1)`.
 
