@@ -441,7 +441,6 @@ impl Default for Identicode {
 				"MidnightBSD",
 				"GhostBSD",
 				"TrueOS",
-				"prismBSD",
 				"NetBSD",
 				"OpenBSD",
 				"Bitrig",
@@ -542,12 +541,19 @@ impl Identicode {
 				},
 
 				Print => {
+					fn push_item(vect: &mut Vec<String>, list: &mut Vec<String>, stack: u64) {
+						if list[stack as usize] != "" {
+							vect.push(list[stack as usize].clone());
+							list[stack as usize] = "".to_string();
+						}
+					}
+
 					if self.mode == Modes::Language && self.stack < self.lang_list.len() as u64 {
-						self.languages.push(self.lang_list[self.stack as usize].clone());
+						push_item(&mut self.languages, &mut self.lang_list, self.stack);
 					} else if self.mode == Modes::Branch && self.stack < self.branch_list.len() as u64 {
-						self.branches.push(self.branch_list[self.stack as usize].clone());
+						push_item(&mut self.branches, &mut self.branch_list, self.stack);
 					} else if self.mode == Modes::OS && self.stack < self.os_list.len() as u64 {
-						self.oses.push(self.os_list[self.stack as usize].clone());
+						push_item(&mut self.oses, &mut self.os_list, self.stack);
 					}
 
 					self.stack = 0;
