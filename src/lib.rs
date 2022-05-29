@@ -121,7 +121,7 @@ impl Default for Identicode {
 				"BETA",
 				"BlitzMax",
 				"Boo",
-				"Bourne Shell",
+				"bash",
 				"Bro",
 				"C",
 				"C Shell",
@@ -513,6 +513,7 @@ impl Default for Identicode {
 				"Visopsys"
 			].iter().map(|&s| s.into()).collect(),
 			other_list: vec![
+			/* desktop environments */
 				"GNOME Shell",
 				"KDE Plasma",
 				"Xfce",
@@ -554,7 +555,27 @@ impl Default for Identicode {
 				"vim",
 				"nvim",
 				"gvim",
-				"Atom"
+				"Atom",
+				"npm",
+				"pnpm",
+				"yarn",
+				"Deno",
+				"Node.js",
+				"Vue.js",
+				"Svelte",
+				"SolidJS",
+				"Astro",
+				"Angular",
+				"AngularJS",
+				"Bootstrap",
+				"Bulma",
+				"Zsh",
+				"Fish",
+				"ESLint",
+				"Prettier",
+				"Mozilla Firefox",
+				"Microsoft Edge",
+				"Opera"
 			].iter().map(|&s| s.into()).collect(),
 		}
 	}
