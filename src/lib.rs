@@ -12,6 +12,8 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
+use std::mem::take;
+
 pub const CURRENT_VERSION: u32 = 3;
 
 #[derive(PartialEq)]
@@ -161,8 +163,8 @@ impl Identicode {
                 Print => {
                     fn push_item(vect: &mut Vec<String>, list: &mut [String], stack: u64) {
                         if !list[stack as usize].is_empty() {
-                            vect.push(list[stack as usize].clone());
-                            list[stack as usize] = "".to_string();
+                            let take_ownership = take(&mut list[stack as usize]);
+                            vect.push(take_ownership);
                         }
                     }
 
