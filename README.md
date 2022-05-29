@@ -1,8 +1,8 @@
 <div align="center">
 	<h1>identicode</h1>
 	<p><i>code that identifies you</i></p>
-	<img src="https://img.shields.io/github/license/gulje/identicode?style=flat-square"/> <br/>
-	<p><a href="https://crates.io/crates/identicode"><b>crates.io</b></a></p>
+	<a href="https://crates.io/crates/identicode"><img src="https://img.shields.io/crates/v/identicode?style=flat-square"/></a>
+	<img src="https://img.shields.io/github/license/gulje/identicode?style=flat-square"/>
 </div>
 
 ## Build & Installation
