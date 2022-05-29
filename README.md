@@ -1,7 +1,8 @@
 <div align="center">
 	<h1>identicode</h1>
 	<p><i>code that identifies you</i></p>
-	<img src="https://img.shields.io/github/license/gulje/identicode?style=flat-square"/>
+	<img src="https://img.shields.io/github/license/gulje/identicode?style=flat-square"/> <br/>
+	<p><a href="https://crates.io/crates/identicode"><b>crates.io</b></a></p>
 </div>
 
 ## Build & Installation
@@ -300,8 +301,8 @@ and don't forget to add it to the [Indexes](#indexes) section in [README.md](REA
 253	yacc
 254	Yorick
 255	Z shell
-256 HTML
-257 CSS
+256	HTML
+257	CSS
 ```
 </details>
 <details>
