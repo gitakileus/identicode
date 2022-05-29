@@ -84,19 +84,19 @@ impl Tokens {
 
 impl Default for Identicode {
     fn default() -> Self {
-        let langs = String::from_utf8_lossy(include_bytes!("data/langs.txt"))
+        let lang_list = String::from_utf8_lossy(include_bytes!("data/langs.txt"))
             .lines()
             .map(str::to_string)
             .collect();
-        let branches = String::from_utf8_lossy(include_bytes!("data/branches.txt"))
+        let branch_list = String::from_utf8_lossy(include_bytes!("data/branches.txt"))
             .lines()
             .map(str::to_string)
             .collect();
-        let oses = String::from_utf8_lossy(include_bytes!("data/oses.txt"))
+        let os_list = String::from_utf8_lossy(include_bytes!("data/oses.txt"))
             .lines()
             .map(str::to_string)
             .collect();
-        let others = String::from_utf8_lossy(include_bytes!("data/others.txt"))
+        let other_list = String::from_utf8_lossy(include_bytes!("data/others.txt"))
             .lines()
             .map(str::to_string)
             .collect();
@@ -109,10 +109,10 @@ impl Default for Identicode {
             branches: vec![],
             oses: vec![],
             others: vec![],
-            lang_list: langs,
-            branch_list: branches,
-            other_list: others,
-            os_list: oses,
+            lang_list,
+            branch_list,
+            other_list,
+            os_list,
         }
     }
 }
