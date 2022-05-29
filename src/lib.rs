@@ -102,7 +102,7 @@ impl Default for Identicode {
             .collect();
 
         Identicode {
-        	version: 0,
+            version: 0,
             mode: Modes::Version,
             stack: 0,
             languages: vec![],
@@ -168,22 +168,22 @@ impl Identicode {
                             if self.stack < self.lang_list.len() as u64 {
                                 push_item(&mut self.languages, &mut self.lang_list, self.stack);
                             }
-                        },
+                        }
                         Modes::Branch => {
                             if self.stack < self.branch_list.len() as u64 {
                                 push_item(&mut self.branches, &mut self.branch_list, self.stack);
                             }
-                        },
+                        }
                         Modes::OS => {
                             if self.stack < self.lang_list.len() as u64 {
                                 push_item(&mut self.oses, &mut self.os_list, self.stack);
                             }
-                        },
+                        }
                         Modes::Other => {
                             if self.stack < self.other_list.len() as u64 {
                                 push_item(&mut self.others, &mut self.other_list, self.stack);
                             }
-                        },
+                        }
                         Modes::Version => {
                             self.version = self.stack as u32;
                         }
