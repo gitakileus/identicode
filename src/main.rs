@@ -1,4 +1,4 @@
-// Copyright 2022 gulje 
+// Copyright 2022 gulje
 
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not
 // use this file except in compliance with the License. You may obtain a copy
@@ -23,14 +23,17 @@ fn print_info(vect: Vec<String>) {
 }
 
 fn main() {
-    use identicode::{Identicode};
+    use identicode::Identicode;
 
     let args: Vec<_> = std::env::args().collect();
 
     if args.len() < 2 {
-        println!("identicode - code that identifies you\n\
+        println!(
+            "identicode - code that identifies you\n\
         Usage:\n\
-        \t{} <code>", args.last().unwrap());
+        \t{} <code>",
+            args.last().unwrap()
+        );
 
         std::process::exit(1)
     }

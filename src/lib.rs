@@ -14,152 +14,167 @@
 
 #[derive(PartialEq)]
 enum Modes {
-	Null,
-	Language,
-	Branch,
-	OS,
-	Other
+    Null,
+    Language,
+    Branch,
+    OS,
+    Other,
 }
 
 pub enum Tokens {
-	Language,
-	Branch,
-	OS,
-	Other,
+    Language,
+    Branch,
+    OS,
+    Other,
 
-	Push,
-	Push5,
-	Push10,
-	Push50,
-	Push100,
-	Sub,
+    Push,
+    Push5,
+    Push10,
+    Push50,
+    Push100,
+    Sub,
 
-	Print,
+    Print,
 }
 
 pub struct Identicode {
-	lang_list: Vec<String>,
-	branch_list: Vec<String>,
-	os_list: Vec<String>,
-	other_list: Vec<String>,
+    lang_list: Vec<String>,
+    branch_list: Vec<String>,
+    os_list: Vec<String>,
+    other_list: Vec<String>,
 
-	mode: Modes,
+    mode: Modes,
 
-	stack: u64,
+    stack: u64,
 
-	pub languages: Vec<String>,
-	pub branches: Vec<String>,
-	pub oses: Vec<String>,
-	pub others: Vec<String>
+    pub languages: Vec<String>,
+    pub branches: Vec<String>,
+    pub oses: Vec<String>,
+    pub others: Vec<String>,
 }
 
 impl Tokens {
-	fn val(ch: char) -> Self {
-		use self::Tokens::{*};
+    fn val(ch: char) -> Self {
+        use self::Tokens::*;
 
-		match ch {
-			'$' => { Language },
-			'@' => { Branch },
-			'?' => { OS },
-			'&' => { Other },
+        match ch {
+            '$' => Language,
+            '@' => Branch,
+            '?' => OS,
+            '&' => Other,
 
-			'+' => { Push },
-			'*' => { Push5 },
-			'/' => { Push10 },
-			'%' => { Push50 },
-			'=' => { Push100 },
-			'-' => { Sub },
+            '+' => Push,
+            '*' => Push5,
+            '/' => Push10,
+            '%' => Push50,
+            '=' => Push100,
+            '-' => Sub,
 
-			';' => { Print },
-			_ => {
-				println!("\x1b[1;31merror:\x1b[0m unknown character '{}'", ch);
-				std::process::exit(1);
-			}
-		}
-	}
+            ';' => Print,
+            _ => {
+                println!("\x1b[1;31merror:\x1b[0m unknown character '{}'", ch);
+                std::process::exit(1);
+            }
+        }
+    }
 }
 
 impl Default for Identicode {
-	fn default() -> Self {
-		let langs = String::from_utf8_lossy(include_bytes!("data/langs.txt")).lines().map(str::to_string).collect();
-		let branches = String::from_utf8_lossy(include_bytes!("data/branches.txt")).lines().map(str::to_string).collect();
-		let oses = String::from_utf8_lossy(include_bytes!("data/oses.txt")).lines().map(str::to_string).collect();
-		let others = String::from_utf8_lossy(include_bytes!("data/others.txt")).lines().map(str::to_string).collect();
+    fn default() -> Self {
+        let langs = String::from_utf8_lossy(include_bytes!("data/langs.txt"))
+            .lines()
+            .map(str::to_string)
+            .collect();
+        let branches = String::from_utf8_lossy(include_bytes!("data/branches.txt"))
+            .lines()
+            .map(str::to_string)
+            .collect();
+        let oses = String::from_utf8_lossy(include_bytes!("data/oses.txt"))
+            .lines()
+            .map(str::to_string)
+            .collect();
+        let others = String::from_utf8_lossy(include_bytes!("data/others.txt"))
+            .lines()
+            .map(str::to_string)
+            .collect();
 
-		Identicode {
-			mode: Modes::Null,
-			stack: 0,
-			languages: vec![],
-			branches: vec![],
-			oses: vec![],
-			others: vec![],
-			lang_list: langs,
-			branch_list: branches,
-			other_list: others,
-			os_list: oses,
-		}
-	}
+        Identicode {
+            mode: Modes::Null,
+            stack: 0,
+            languages: vec![],
+            branches: vec![],
+            oses: vec![],
+            others: vec![],
+            lang_list: langs,
+            branch_list: branches,
+            other_list: others,
+            os_list: oses,
+        }
+    }
 }
 
 impl Identicode {
-	pub fn init(&mut self, file_data: String) {
-		use Tokens::{*};
+    pub fn init(&mut self, file_data: String) {
+        use Tokens::*;
 
-		for ch in file_data.chars() {
-			match Tokens::val(ch) {
-				Language => {
-					self.mode = Modes::Language;
-				},
-				Branch => {
-					self.mode = Modes::Branch;
-				},
-				OS => {
-					self.mode = Modes::OS;
-				},
-				Other => {
-					self.mode = Modes::Other;
-				}
+        for ch in file_data.chars() {
+            match Tokens::val(ch) {
+                Language => {
+                    self.mode = Modes::Language;
+                }
+                Branch => {
+                    self.mode = Modes::Branch;
+                }
+                OS => {
+                    self.mode = Modes::OS;
+                }
+                Other => {
+                    self.mode = Modes::Other;
+                }
 
-				Push => {
-					self.stack += 1;
-				},
-				Push5 => {
-					self.stack += 5;
-				},
-				Push10 => {
-					self.stack += 10;
-				},
-				Push50 => {
-					self.stack += 50;
-				},
-				Push100 => {
-					self.stack += 100;
-				},
-				Sub => {
-					self.stack -= 1;
-				},
+                Push => {
+                    self.stack += 1;
+                }
+                Push5 => {
+                    self.stack += 5;
+                }
+                Push10 => {
+                    self.stack += 10;
+                }
+                Push50 => {
+                    self.stack += 50;
+                }
+                Push100 => {
+                    self.stack += 100;
+                }
+                Sub => {
+                    self.stack -= 1;
+                }
 
-				Print => {
-					fn push_item(vect: &mut Vec<String>, list: &mut Vec<String>, stack: u64) {
-						if list[stack as usize] != "" {
-							vect.push(list[stack as usize].clone());
-							list[stack as usize] = "".to_string();
-						}
-					}
+                Print => {
+                    fn push_item(vect: &mut Vec<String>, list: &mut Vec<String>, stack: u64) {
+                        if list[stack as usize] != "" {
+                            vect.push(list[stack as usize].clone());
+                            list[stack as usize] = "".to_string();
+                        }
+                    }
 
-					if self.mode == Modes::Language && self.stack < self.lang_list.len() as u64 {
-						push_item(&mut self.languages, &mut self.lang_list, self.stack);
-					} else if self.mode == Modes::Branch && self.stack < self.branch_list.len() as u64 {
-						push_item(&mut self.branches, &mut self.branch_list, self.stack);
-					} else if self.mode == Modes::OS && self.stack < self.os_list.len() as u64 {
-						push_item(&mut self.oses, &mut self.os_list, self.stack);
-					} else if self.mode == Modes::Other && self.stack < self.other_list.len() as u64 {
-						push_item(&mut self.others, &mut self.other_list, self.stack);
-					}
+                    if self.mode == Modes::Language && self.stack < self.lang_list.len() as u64 {
+                        push_item(&mut self.languages, &mut self.lang_list, self.stack);
+                    } else if self.mode == Modes::Branch
+                        && self.stack < self.branch_list.len() as u64
+                    {
+                        push_item(&mut self.branches, &mut self.branch_list, self.stack);
+                    } else if self.mode == Modes::OS && self.stack < self.os_list.len() as u64 {
+                        push_item(&mut self.oses, &mut self.os_list, self.stack);
+                    } else if self.mode == Modes::Other && self.stack < self.other_list.len() as u64
+                    {
+                        push_item(&mut self.others, &mut self.other_list, self.stack);
+                    }
 
-					self.stack = 0;
-				}
-			}
-		}
-	}
+                    self.stack = 0;
+                }
+            }
+        }
+    }
 }
