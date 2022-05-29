@@ -66,7 +66,10 @@ impl Tokens {
 			'-' => { Sub },
 
 			';' => { Print },
-			_ => { unreachable!("Unknown character: {}", ch) }
+			_ => {
+				println!("\x1b[1;31merror:\x1b[0m unknown character '{}'", ch);
+				std::process::exit(1);
+			}
 		}
 	}
 }
