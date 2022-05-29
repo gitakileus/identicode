@@ -13,7 +13,7 @@
 // under the License.
 
 fn print_info(vect: Vec<String>) {
-    if vect.len() == 0 {
+    if vect.is_empty() {
         println!("None");
     } else {
         for item in vect {
