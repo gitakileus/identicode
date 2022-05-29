@@ -12,6 +12,16 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
+fn print_info(vect: Vec<String>) {
+    if vect.len() == 0 {
+        println!("None");
+    } else {
+        for item in vect {
+            println!("  * {}", item);
+        }
+    }
+}
+
 fn main() {
     use identicode::{Identicode};
 
@@ -29,17 +39,11 @@ fn main() {
     init.init(std::env::args().last().unwrap());
 
     println!("\x1b[1;93mLanguages\x1b[0m:");
-    for lang in init.languages {
-        println!("  * {}", lang);
-    }
+    print_info(init.languages);
 
     println!("\n\x1b[1;92mBranches\x1b[0m:");
-    for branch in init.branches {
-        println!("  * {}", branch);
-    }
+    print_info(init.branches);
 
     println!("\n\x1b[1;94mOperating Systems\x1b[0m:");
-    for os in init.oses {
-        println!("  * {}", os);
-    }
+    print_info(init.oses);
 }
