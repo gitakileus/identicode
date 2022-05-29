@@ -338,7 +338,9 @@ impl Default for Identicode {
 				"XQuery",
 				"yacc",
 				"Yorick",
-				"Z shell"
+				"Z shell",
+				"HTML",
+				"CSS"
 			].iter().map(|&s| s.into()).collect(),
 			branch_list: vec![
 				"Human-computer interaction",
