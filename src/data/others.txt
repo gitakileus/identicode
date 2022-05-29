@@ -1,0 +1,62 @@
+GNOME Shell
+KDE Plasma
+Xfce
+Fluxbox
+LXDE
+LXQt
+Enlightenment
+MATE
+Cinnamon
+EDE
+Razor-qt
+Mezzo
+ROX
+Sugar
+Trinity
+Unity
+Windows Vista (Aero)
+Mac OS X (Aqua)
+Ambient
+Pantheon
+Moksha
+UKUI
+Cutefish
+Deepin DE
+Budgie
+Openbox
+i3wm
+bspwm
+dwm
+sway
+IceWM
+Discord
+GitHub
+Matrix
+Git
+Chrome
+Visual Studio Code
+Sublime Text
+vim
+nvim
+gvim
+Atom
+npm
+pnpm
+yarn
+Deno
+Node.js
+Vue.js
+Svelte
+SolidJS
+Astro
+Angular
+AngularJS
+Bootstrap
+Bulma
+Zsh
+Fish
+ESLint
+Prettier
+Mozilla Firefox
+Microsoft Edge
+Opera

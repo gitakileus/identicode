@@ -1,0 +1,126 @@
+Arthur
+RISC OS
+Fire OS
+Amiga OS
+AMSDOS
+macOS
+iOS
+iPadOS
+tvOS
+bridgeOS
+Atari DOS
+BeOS
+Unix
+BESYS
+Plan 9
+Inferno
+Android
+Harmony OS
+LiteOS
+iRMX
+PC DOS
+OS/2
+Remix OS
+KaiOS
+LynxOS
+Xenix
+MS-DOS
+DOS/V
+Windows
+Windows 1.0
+Windows 2.0
+Windows 3.0
+Windows 3.1x
+Windows 3.2
+Windows 95
+Windows 98
+Windows ME
+Windows NT
+Windows NT 3.1
+Windows NT 4.0
+Windows 2000
+Windows XP
+Windows Server 2003
+Windows Vista
+Windows Phone 7
+Windows 8
+Windows RT
+Windows Phone 8
+Windows 8.1
+Windows Phone 8.1
+Windows 10
+Windows 10 Mobile
+Windows 11
+ES
+NeXTSTEP
+NetWare
+UnixWare
+Bada
+Tizen
+One UI
+Sun OS
+BSD
+FreeBSD
+DragonFlyBSD
+MidnightBSD
+GhostBSD
+TrueOS
+NetBSD
+OpenBSD
+Bitrig
+Darwin
+GNU Hurd
+Linux
+RHEL
+Rocky Linux
+Red Hat Linux
+CentOS
+Fedora
+openSUSE
+SUSE Linux Enterprise Desktop
+SUSE Linux Enterprise Server
+SUSE Studio
+GeckoLinux
+Mandrake Linux
+Debian
+MX Linux
+Deepin
+Devuan
+Kali Linux
+Pure OS
+Ubuntu
+Kubuntu
+Lubuntu
+Ubuntu Budgie
+Ubuntu Kylin
+Ubuntu Mate
+Xubuntu
+Bodhi Linux
+elementary OS
+Linux Mint
+Zorin OS
+Pop!_OS
+Arch Linux
+Manjaro
+Artix Linux
+EndeavourOS
+SteamOS
+Gentoo
+Chrome OS
+Chromium OS
+NixOS
+Void Linux
+GuixSD
+Solus
+Redox
+illumos
+OpenIndiana
+FreeDOS
+Genode
+FFusionOS
+Ghost OS
+Haiku
+ReactOS
+TempleOS
+Serenity
+Visopsys
