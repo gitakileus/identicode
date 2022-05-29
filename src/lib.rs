@@ -101,7 +101,7 @@ impl Default for Identicode {
             .map(str::to_string)
             .collect();
 
-        Identicode {
+        Self {
             version: 0,
             mode: Modes::Version,
             stack: 0,
@@ -118,10 +118,13 @@ impl Default for Identicode {
 }
 
 impl Identicode {
-    pub fn init(&mut self, file_data: String) {
+    pub fn init<T>(&mut self, file_data: T)
+    where
+        T: ToString,
+    {
         use Tokens::*;
 
-        for ch in file_data.chars() {
+        for ch in file_data.to_string().chars() {
             match Tokens::val(ch) {
                 Language => {
                     self.mode = Modes::Language;
