@@ -36,6 +36,10 @@ For example, you want to add the Rust `(index: 203)` language.
 You can also apply this process with operating systems (`?`) and branches (`@`).
 
 ## Indexes:
+If you can't find what you want, you can create a [Pull Request](https://github.com/gulje/identicode/pulls)!
+All lists are present in `src/lib.rs` file. Add what you want to add at the bottom,
+and don't forget to add it to the [Indexes](#indexes) section in [README.md](README.md).
+
 <details>
 	<summary>Languages</summary>
 	
