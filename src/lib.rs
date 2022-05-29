@@ -12,6 +12,8 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
+use std::mem::take;
+
 pub const CURRENT_VERSION: u32 = 3;
 
 #[derive(PartialEq)]
@@ -84,35 +86,35 @@ impl Tokens {
 
 impl Default for Identicode {
     fn default() -> Self {
-        let langs = String::from_utf8_lossy(include_bytes!("data/langs.txt"))
+        let lang_list = String::from_utf8_lossy(include_bytes!("data/langs.txt"))
             .lines()
             .map(str::to_string)
             .collect();
-        let branches = String::from_utf8_lossy(include_bytes!("data/branches.txt"))
+        let branch_list = String::from_utf8_lossy(include_bytes!("data/branches.txt"))
             .lines()
             .map(str::to_string)
             .collect();
-        let oses = String::from_utf8_lossy(include_bytes!("data/oses.txt"))
+        let os_list = String::from_utf8_lossy(include_bytes!("data/oses.txt"))
             .lines()
             .map(str::to_string)
             .collect();
-        let others = String::from_utf8_lossy(include_bytes!("data/others.txt"))
+        let other_list = String::from_utf8_lossy(include_bytes!("data/others.txt"))
             .lines()
             .map(str::to_string)
             .collect();
 
-        Identicode {
-        	version: 0,
+        Self {
+            version: 0,
             mode: Modes::Version,
             stack: 0,
             languages: vec![],
             branches: vec![],
             oses: vec![],
             others: vec![],
-            lang_list: langs,
-            branch_list: branches,
-            other_list: others,
-            os_list: oses,
+            lang_list,
+            branch_list,
+            other_list,
+            os_list,
         }
     }
 }
@@ -158,8 +160,8 @@ impl Identicode {
                 Print => {
                     fn push_item(vect: &mut Vec<String>, list: &mut [String], stack: u64) {
                         if !list[stack as usize].is_empty() {
-                            vect.push(list[stack as usize].clone());
-                            list[stack as usize] = "".to_string();
+                            let take_ownership = take(&mut list[stack as usize]);
+                            vect.push(take_ownership);
                         }
                     }
 
@@ -168,22 +170,22 @@ impl Identicode {
                             if self.stack < self.lang_list.len() as u64 {
                                 push_item(&mut self.languages, &mut self.lang_list, self.stack);
                             }
-                        },
+                        }
                         Modes::Branch => {
                             if self.stack < self.branch_list.len() as u64 {
                                 push_item(&mut self.branches, &mut self.branch_list, self.stack);
                             }
-                        },
+                        }
                         Modes::OS => {
                             if self.stack < self.lang_list.len() as u64 {
                                 push_item(&mut self.oses, &mut self.os_list, self.stack);
                             }
-                        },
+                        }
                         Modes::Other => {
                             if self.stack < self.other_list.len() as u64 {
                                 push_item(&mut self.others, &mut self.other_list, self.stack);
                             }
-                        },
+                        }
                         Modes::Version => {
                             self.version = self.stack as u32;
                         }
