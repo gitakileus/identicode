@@ -30,8 +30,8 @@ fn main() {
     if args.len() < 2 {
         println!(
             "identicode - code that identifies you\n\
-        Usage:\n\
-        \t{} <code>",
+        Usage: {} <code>\n\
+        Your version: +++;",
             args.last().unwrap()
         );
 
@@ -41,15 +41,20 @@ fn main() {
     let mut init = Identicode::default();
     init.init(std::env::args().last().unwrap());
 
-    println!("\x1b[1;93mLanguages\x1b[0m:");
+    if init.version > identicode::CURRENT_VERSION {
+        println!("\x1b[1;93mwarning:\x1b[0m The version of the identicode you are trying to read is higher than your version.\n\
+            Some items may not be printed correctly. Please update identicode!\n");
+    }
+
+    println!("\x1b[1;91mLanguages\x1b[0m:");
     print_info(init.languages);
 
     println!("\n\x1b[1;92mBranches\x1b[0m:");
     print_info(init.branches);
 
-    println!("\n\x1b[1;94mOperating Systems\x1b[0m:");
+    println!("\n\x1b[1;93mOperating Systems\x1b[0m:");
     print_info(init.oses);
 
-    println!("\n\x1b[1;90mOthers\x1b[0m:");
+    println!("\n\x1b[1;94mOthers\x1b[0m:");
     print_info(init.others);
 }

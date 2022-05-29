@@ -12,9 +12,11 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
+pub const CURRENT_VERSION: u32 = 3;
+
 #[derive(PartialEq)]
 enum Modes {
-    Null,
+    Version,
     Language,
     Branch,
     OS,
@@ -47,6 +49,7 @@ pub struct Identicode {
 
     stack: u64,
 
+    pub version: u32,
     pub languages: Vec<String>,
     pub branches: Vec<String>,
     pub oses: Vec<String>,
@@ -99,7 +102,8 @@ impl Default for Identicode {
             .collect();
 
         Identicode {
-            mode: Modes::Null,
+        	version: 0,
+            mode: Modes::Version,
             stack: 0,
             languages: vec![],
             branches: vec![],
@@ -170,6 +174,9 @@ impl Identicode {
                     } else if self.mode == Modes::Other && self.stack < self.other_list.len() as u64
                     {
                         push_item(&mut self.others, &mut self.other_list, self.stack);
+                    } else if self.mode == Modes::Version {
+                    	self.version = self.stack as u32;
+                    	self.stack = 0;
                     }
 
                     self.stack = 0;
